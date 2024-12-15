@@ -1,14 +1,14 @@
-import pprint
-
+import pprint, os
 from bs4 import BeautifulSoup
 import lxml, requests
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv, dotenv_values
 
-
+load_dotenv()
 auth_manager = SpotifyOAuth(
-    client_id="95dfff53926244bab426a174d30e3046",
-    client_secret="1564d062949e488e98272797f3df239a",
+    client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+    client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
     scope="playlist-modify-private",
     redirect_uri="http://example.com",
     show_dialog=True,
